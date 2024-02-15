@@ -10,7 +10,8 @@ def add_user_to_group():
     
     output = output.split(" ")
     chosenGroups = chosenGroups.split(" ")
-    print("Ajouter à:")found = TruegroupString = ""
+    print("Ajouter à:")
+    found = TruegroupString = ""
     
     for grp in chosenGroups:
         for existingGrp in output:
@@ -20,14 +21,17 @@ def add_user_to_group():
                 if found == False:
                     print("-Nouveau groupe : " + grp)
                     groupString = groupString + grp + ","
-                    else:found = False
+                else:
+                    found = False
                     
-                    groupString = groupString[:-1] + " "confirm = " "
+                    groupString = groupString[:-1] + " "
+                    confirm = " "
                     while confirm != "Y" and confirm != "N" :
                         print("Ajouter un utilisateur '" + username + "' à ces groupes? (Y/N)")
-                        confirm = input().upper()if confirm == "N":
-                            print("Utilisateur '" + username + "' non ajouté")
-                            elif confirm == "Y":
-                                os.system("sudo usermod -aG " + groupString + username)
-                                print"Utilisateur'" + username + "' ajouté")
+                        confirm = input().upper()
+                        if confirm == "N":
+                             print("Utilisateur '" + username + "' non ajouté")
+                        elif confirm == "Y":
+    os.system("sudo usermod -aG " + groupString + username)
+    print("Utilisateur'" + username + "' ajouté")
 
