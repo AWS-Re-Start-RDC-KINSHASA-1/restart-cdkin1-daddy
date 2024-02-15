@@ -1,6 +1,4 @@
-import os
 import subprocess
-
 
 def add_user_to_group():
     username = input("Indiquez le nom de l'utilisateur à ajouter à ungroupe: ")
@@ -23,20 +21,17 @@ def add_user_to_group():
                 if found == False:
                     print("-Nouveau groupe : " + grp)
                     groupString = groupString + grp + ","
-                else:found = False
+                else:
+                    found = False
                     
-                groupString = groupString[:-1] + " "
-                confirm = " "
-
-                while confirm != "Y" and confirm != "N" :
-                        
+                    groupString = groupString[:-1] + " "
+                    confirm = " "
+                    while confirm != "Y" and confirm != "N" :
                         print("Ajouter un utilisateur '" + username + "' à ces groupes? (Y/N)")
                         confirm = input().upper()
                         if confirm == "N":
-                            print("Utilisateur '" + username + "' non ajouté")
-
+                             print("Utilisateur '" + username + "' non ajouté")
                         elif confirm == "Y":
-     #not working                       
     os.system("sudo usermod -aG " + groupString + username)
     print("Utilisateur'" + username + "' ajouté")
 
